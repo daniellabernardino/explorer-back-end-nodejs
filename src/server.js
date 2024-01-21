@@ -1,14 +1,11 @@
 const express = require ("express")
 
-const app = express()
+const routes = require("./routes")
 
-app.get("/message/:id/:user", (req, res) => {
-  const {id, user } = req.params
- 
-  res.send(`
-  Id da mensagem: ${id}.
-  Para o usuário: ${user}.`)
-})
+const app = express()
+app.use(express.json())
+
+app.use(routes)
 
 const PORT = 3333
 app.listen(PORT, () => console.log(`Server is runnion on Port ${PORT}`))
